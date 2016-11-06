@@ -13,7 +13,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+        <param-value>/WEB-INF/config/spring/applicationContext.xml, /WEB-INF/config/spring/config_persistence_spring.xml</param-value>
     </context-param>
 
     <context-param>
@@ -54,13 +54,13 @@
     <welcome-file-list>
         <welcome-file>pages/home.html</welcome-file>
     </welcome-file-list>
-<!--
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>-->
+    </listener>
 
 </web-app>
