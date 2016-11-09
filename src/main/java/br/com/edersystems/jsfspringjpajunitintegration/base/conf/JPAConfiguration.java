@@ -16,6 +16,7 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -31,6 +32,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
+@ComponentScan(basePackages =
+{
+    "br.com.edersystems.jsfspringjpajunitintegration.*"
+})
 public class JPAConfiguration
 {
     @Bean
@@ -40,7 +45,7 @@ public class JPAConfiguration
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[]
         {
-            "br.com.edersystems.jsfspringjpajunitintegration.model"
+            "br.com.edersystems.jsfspringjpajunitintegration.*"
         });
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
