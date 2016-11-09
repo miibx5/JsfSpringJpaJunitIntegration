@@ -24,5 +24,10 @@
         </navigation-case>
     </navigation-rule>
 
-
+    <managed-bean>
+        <managed-bean-name>listPersonsController</managed-bean-name>
+        <managed-bean-class>br.com.edersystems.jsfspringjpajunitintegration.controllers.person.ListPersonsController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>
