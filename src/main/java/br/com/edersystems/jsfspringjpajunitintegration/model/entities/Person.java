@@ -52,16 +52,16 @@ public class Person implements Serializable
 
     public Person()
     {
-        this(null, null, null, null, null);
+        this(null, null, null, null);
     }
 
-    public Person(Long id, String name, Date registrationDate, Date inativationDate, String email)
+    public Person(Long id, String name, Date inativationDate, String email)
     {
         this.id = id;
         this.name = name;
-        this.registrationDate = registrationDate;
         this.inativationDate = inativationDate;
         this.email = email;
+        this.registrationDate = new Date();
     }
 
     public Long getId()

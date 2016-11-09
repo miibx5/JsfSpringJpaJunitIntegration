@@ -12,6 +12,7 @@
  */
 package br.com.edersystems.jsfspringjpajunitintegration.controllers.person;
 
+import br.com.edersystems.jsfspringjpajunitintegration.model.entities.Person;
 import br.com.edersystems.jsfspringjpajunitintegration.model.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ public class ListPersonsController implements java.io.Serializable
     @Autowired
     private PersonService service;
 
+    private Person person;
+
     public ListPersonsController()
     {
     }
@@ -37,9 +40,26 @@ public class ListPersonsController implements java.io.Serializable
         return "listPersons";
     }
 
+    public final void doCreatePerson()
+    {
+        this.person = new Person(null, "Teste Person", null, "teste@teste.com.br");
+    }
+
     public void savePerson()
     {
-        this.service.savePerson(null);
+        this.doCreatePerson();
+        this.service.savePerson(this.person);
+        System.out.println("\n\n\nThe person saved is: " + this.person.getId() + " - " + this.person.getName());
+    }
+
+    public Person getPerson()
+    {
+        return person;
+    }
+
+    public void setPerson(Person person)
+    {
+        this.person = person;
     }
 
 }
