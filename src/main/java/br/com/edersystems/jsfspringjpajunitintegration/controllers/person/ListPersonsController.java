@@ -14,6 +14,9 @@ package br.com.edersystems.jsfspringjpajunitintegration.controllers.person;
 
 import br.com.edersystems.jsfspringjpajunitintegration.model.entities.Person;
 import br.com.edersystems.jsfspringjpajunitintegration.model.services.PersonService;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -25,6 +28,8 @@ import org.springframework.stereotype.Controller;
 public class ListPersonsController implements java.io.Serializable
 {
     private static final long serialVersionUID = 1L;
+
+    private static final String PERSON__SAVED__WITH__SUCCESS = "Person Saved With Success!!!";
 
     @Autowired
     private PersonService service;
@@ -42,14 +47,7 @@ public class ListPersonsController implements java.io.Serializable
 
     public final void doCreatePerson()
     {
-        this.person = new Person(null, "Teste Person", null, "teste@teste.com.br");
-    }
-
-    public void savePerson()
-    {
-        this.doCreatePerson();
-        this.service.savePerson(this.person);
-        System.out.println("\n\n\nThe person saved is: " + this.person.getId() + " - " + this.person.getName());
+        this.person = new Person();
     }
 
     public Person getPerson()
@@ -62,4 +60,15 @@ public class ListPersonsController implements java.io.Serializable
         this.person = person;
     }
 
+    public List<Person> getPersons()
+    {
+        return this.service.getPersons();
+    }
+
+    public void savePerson()
+    {
+        this.service.savePerson(this.person);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, PERSON__SAVED__WITH__SUCCESS, PERSON__SAVED__WITH__SUCCESS));
+    }
 }

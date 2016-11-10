@@ -58,9 +58,9 @@ public class JPAConfiguration
     {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/personal_finances");
-        dataSource.setUsername("personal_finances");
-        dataSource.setPassword("personal_finances");
+        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/jsf_spring_jpa_junit_integration");
+        dataSource.setUsername("teste");
+        dataSource.setPassword("teste");
         return dataSource;
     }
 

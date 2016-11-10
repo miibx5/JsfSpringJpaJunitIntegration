@@ -14,6 +14,7 @@ package br.com.edersystems.jsfspringjpajunitintegration.model.services;
 
 import br.com.edersystems.jsfspringjpajunitintegration.model.entities.Person;
 import br.com.edersystems.jsfspringjpajunitintegration.model.repositories.person.PersonRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,11 @@ public class PersonService implements java.io.Serializable
     public Person savePerson(Person p)
     {
         return this.repository.savePojo(p);
+    }
+
+    public List<Person> getPersons()
+    {
+        return this.repository.getALL();
     }
 
 }

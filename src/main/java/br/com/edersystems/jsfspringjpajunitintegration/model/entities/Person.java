@@ -36,8 +36,15 @@ public class Person implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private boolean active;
+
     @Column(name = "name_of_person", nullable = false, length = 120)
     private String name;
+
+    @Column(nullable = false, name = "date_of_birth")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateOfBirth;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @Column(name = "registration_date", nullable = false)
@@ -55,11 +62,12 @@ public class Person implements Serializable
         this(null, null, null, null);
     }
 
-    public Person(Long id, String name, Date inativationDate, String email)
+    public Person(Long id, String name, Date dateOfBirth, String email)
     {
         this.id = id;
+        this.active = Boolean.TRUE;
         this.name = name;
-        this.inativationDate = inativationDate;
+        this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.registrationDate = new Date();
     }
@@ -74,6 +82,16 @@ public class Person implements Serializable
         this.id = id;
     }
 
+    public boolean isActive()
+    {
+        return active;
+    }
+
+    public void setActive(boolean active)
+    {
+        this.active = active;
+    }
+
     public String getName()
     {
         return name;
@@ -82,6 +100,16 @@ public class Person implements Serializable
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public Date getDateOfBirth()
+    {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth)
+    {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Date getRegistrationDate()
