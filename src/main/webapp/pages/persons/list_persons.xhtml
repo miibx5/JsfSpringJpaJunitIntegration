@@ -22,8 +22,8 @@
                         <h:outputText value="Active Persons" class="texto-centralizado" />
                         <p:commandButton id="cmbnewPerson" icon="ui-icon-circle-plus" value="New Person"
                                          styleClass="right-button" oncomplete="PF('dlgNewPerson').show();"
-                                         actionListener="#{listPersonsController.doCreatePerson()}" />
-                        <!--                                         update=":frmNewPerson:pgNewPerson"/>-->
+                                         actionListener="#{listPersonsController.doCreatePerson()}"
+                                         update=":frmNewPerson:pgNewPerson"/>
                         <br />
                         <br />
                     </f:facet>
